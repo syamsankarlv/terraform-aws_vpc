@@ -28,7 +28,7 @@ Installation Steps -[Installation](https://developer.hashicorp.com/terraform/tut
 - Need a IAM user access with attached policies for the creation of VPC.
 - Understanding the operational principles of essential AWS services such as VPC, EC2, and IP subnetting is vital for proficiently architecting and managing cloud infrastructure.
 
-### Passing IAM key's into Environment Variable ###
+### Passing IAM key's into Terraform ###
 
 Here, I'm using environment variables to pass the AWS keys in Terraform. However, there is another method we can utilize. I'll outline the pros and cons of both setups below.
 
