@@ -22,7 +22,7 @@ Installation Steps -[Installation](https://developer.hashicorp.com/terraform/tut
 - It can be deployed in any region and will be fetching the available zones in that region automatically using data source AZ.
 - Public and private subnets will be deployed in each AZ in an automated way.
 - Every subnet CIDR block has been calculated automatically using cidrsubnet function
-- The entire project can be managed from a single file, variables.tf. This allows for streamlined management, including selecting the region, modifying the project name comprehensively, choosing the VPC, and configuring subnetting.
+- The key components of the entire project are passed through the "variables.tf" file. This file facilitates streamlined management, including selecting the region, comprehensively modifying the project name, choosing the VPC, and configuring subnetting.
  
 ### Prerequisites for this project
 - Need a IAM user access with attached policies for the creation of VPC.
@@ -36,13 +36,13 @@ Both methods have their advantages and considerations when it comes to security 
 
 ### Environment variables:
 
-### Advantages:
+#### Advantages:
 
  - Can be set dynamically, which is useful for automation and CI/CD pipelines.
  - Easy to manage and change without altering Terraform configuration files.
  - Reduced risk of accidental exposure compared to files stored on disk.
 
-### Considerations:
+#### Considerations:
 
  - Can clutter the environment if many variables are needed.
  - May not be as centralized or version-controlled as terraform.tfvars.
@@ -50,24 +50,29 @@ Both methods have their advantages and considerations when it comes to security 
 
 #### Terraform.tfvars:
 
-### Advantages:
+#### Advantages:
 
  - Organized and centralized storage of sensitive information.
  - Easily version-controlled along with your Terraform configuration.
  - Can be encrypted at rest using tools like Vault or AWS KMS.
 
-###  Considerations:
+####  Considerations:
  - Needs to be managed securely to prevent unauthorized access.
  - Possibility of accidental exposure if not properly protected or shared.
     
 
-
+- Powershell CMD
 ```sh
 $env:TF_VAR_aws_access_key = "your-access-key"
 $env:TF_VAR_aws_secret_key = "your-secret-key"
 $env:TF_VAR_aws_region = "region"
 ```
-
+- Linux CMD
+```sh
+export TF_VAR_aws_access_key="your-access-key"
+export TF_VAR_aws_secret_key="your-secret-key"
+export TF_VAR_aws_region="region"
+```
 ### Terraform Code Explanation
 
 Here is the variable.tf file with the list of variables for the creation of VPC.
